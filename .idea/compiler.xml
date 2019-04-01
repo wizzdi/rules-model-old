@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for rules-model" enabled="true">
+        <sourceOutputDir name="target/generated-sources/meta-model" />
+        <sourceTestOutputDir name="target/generated-sources/apt-test" />
+        <outputRelativeToContentRoot value="true" />
+        <option name="eclipselink.persistencexml" value="C:\Users\asaf\IdeaProjects\rules-model/src/main/resources/persistence.xml" />
+        <processor name="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor" />
+        <module name="rules-model" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="rules-model" options="-proc:none" />
+    </option>
+  </component>
+</project>
