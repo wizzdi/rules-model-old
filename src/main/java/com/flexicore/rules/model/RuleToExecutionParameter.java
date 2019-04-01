@@ -18,6 +18,7 @@ public class RuleToExecutionParameter {
 	private static RuleToExecutionParameter s_Singleton=new RuleToExecutionParameter();
 	public  static RuleToExecutionParameter s() {return s_Singleton;}
 
+	private int ordinal;
 
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
@@ -42,6 +43,15 @@ public class RuleToExecutionParameter {
 
 	public <T extends RuleToExecutionParameter> T setExecutionParametersHolder(ExecutionParametersHolder executionParametersHolder) {
 		this.executionParametersHolder = executionParametersHolder;
+		return (T) this;
+	}
+
+	public int getOrdinal() {
+		return ordinal;
+	}
+
+	public <T extends RuleToExecutionParameter> T setOrdinal(int ordinal) {
+		this.ordinal = ordinal;
 		return (T) this;
 	}
 }

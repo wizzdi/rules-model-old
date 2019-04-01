@@ -9,11 +9,13 @@ package com.flexicore.rules.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.annotations.AnnotatedClazz;
 import com.flexicore.model.Baseclass;
+import com.flexicore.model.FileResource;
 import com.flexicore.model.KeyWord;
 import com.flexicore.model.KeyWordToBaseclass;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
@@ -24,6 +26,9 @@ import java.util.List;
 public class FlexiCoreRule extends Baseclass {
 	private static FlexiCoreRule s_Singleton=new FlexiCoreRule();
 	public  static FlexiCoreRule s() {return s_Singleton;}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	private FileResource evaluationScript;
 
 
 	@OneToMany(targetEntity = RuleToExecutionParameter.class ,mappedBy = "flexiCoreRule")
@@ -38,6 +43,16 @@ public class FlexiCoreRule extends Baseclass {
 
 	public <T extends FlexiCoreRule> T setRuleToExecutionParameters(List<RuleToExecutionParameter> ruleToExecutionParameters) {
 		this.ruleToExecutionParameters = ruleToExecutionParameters;
+		return (T) this;
+	}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	public FileResource getEvaluationScript() {
+		return evaluationScript;
+	}
+
+	public <T extends FlexiCoreRule> T setEvaluationScript(FileResource evaluationScript) {
+		this.evaluationScript = evaluationScript;
 		return (T) this;
 	}
 }
