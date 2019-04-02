@@ -20,6 +20,8 @@ public class FlexiCoreRuleOp extends FlexiCoreRule {
 	private static FlexiCoreRuleOp s_Singleton=new FlexiCoreRuleOp();
 	public  static FlexiCoreRuleOp s() {return s_Singleton;}
 
+	private RuleOpType ruleOpType;
+
 	@OneToMany(targetEntity = FlexiCoreRule.class,mappedBy ="ruleSet" )
 	@JsonIgnore
 	private List<FlexiCoreRuleLink> andRules=new ArrayList<>();
@@ -32,6 +34,15 @@ public class FlexiCoreRuleOp extends FlexiCoreRule {
 
 	public <T extends FlexiCoreRuleOp> T setAndRules(List<FlexiCoreRuleLink> andRules) {
 		this.andRules = andRules;
+		return (T) this;
+	}
+
+	public RuleOpType getRuleOpType() {
+		return ruleOpType;
+	}
+
+	public <T extends FlexiCoreRuleOp> T setRuleOpType(RuleOpType ruleOpType) {
+		this.ruleOpType = ruleOpType;
 		return (T) this;
 	}
 }

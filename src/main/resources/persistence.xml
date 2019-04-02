@@ -6,8 +6,6 @@
 
 
         <class>com.flexicore.rules.model.FlexiCoreRule</class>
-        <class>com.flexicore.rules.model.FlexiCoreRuleAnd</class>
-        <class>com.flexicore.rules.model.FlexiCoreRuleOr</class>
         <class>com.flexicore.rules.model.FlexiCoreRuleOp</class>
         <class>com.flexicore.rules.model.FlexiCoreRuleLink</class>
         <class>com.flexicore.rules.model.RuleToArgument</class>
