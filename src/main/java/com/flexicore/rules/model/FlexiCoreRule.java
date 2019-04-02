@@ -7,17 +7,12 @@
 package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.flexicore.annotations.AnnotatedClazz;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FileResource;
-import com.flexicore.model.KeyWord;
-import com.flexicore.model.KeyWordToBaseclass;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,17 +26,17 @@ public class FlexiCoreRule extends Baseclass {
 	private FileResource evaluationScript;
 
 
-	@OneToMany(targetEntity = RuleToExecutionParameter.class ,mappedBy = "flexiCoreRule")
+	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
 	@JsonIgnore
-	private List<RuleToExecutionParameter> ruleToExecutionParameters=new ArrayList<>();
+	private List<RuleToArgument> ruleToExecutionParameters=new ArrayList<>();
 
-	@OneToMany(targetEntity = RuleToExecutionParameter.class ,mappedBy = "flexiCoreRule")
+	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
 	@JsonIgnore
-	public List<RuleToExecutionParameter> getRuleToExecutionParameters() {
+	public List<RuleToArgument> getRuleToExecutionParameters() {
 		return ruleToExecutionParameters;
 	}
 
-	public <T extends FlexiCoreRule> T setRuleToExecutionParameters(List<RuleToExecutionParameter> ruleToExecutionParameters) {
+	public <T extends FlexiCoreRule> T setRuleToExecutionParameters(List<RuleToArgument> ruleToExecutionParameters) {
 		this.ruleToExecutionParameters = ruleToExecutionParameters;
 		return (T) this;
 	}
