@@ -16,7 +16,7 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 @Entity
-public class FlexiCoreRuleOp extends Baseclass {
+public class FlexiCoreRuleOp extends FlexiCoreRule {
 	private static FlexiCoreRuleOp s_Singleton=new FlexiCoreRuleOp();
 	public  static FlexiCoreRuleOp s() {return s_Singleton;}
 
