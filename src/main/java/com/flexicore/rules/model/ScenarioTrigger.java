@@ -24,7 +24,7 @@ public class ScenarioTrigger extends Baseclass {
 	private String eventCanonicalClassName;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioTrigger.class,mappedBy = "scenarioTrigger")
+	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenarioTrigger")
 	private List<ScenarioToTrigger> scenarioToTriggers=new ArrayList<>();
 
 	public String getEventCanonicalClassName() {
@@ -37,7 +37,7 @@ public class ScenarioTrigger extends Baseclass {
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioTrigger.class,mappedBy = "scenarioTrigger")
+	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenarioTrigger")
 	public List<ScenarioToTrigger> getScenarioToTriggers() {
 		return scenarioToTriggers;
 	}
