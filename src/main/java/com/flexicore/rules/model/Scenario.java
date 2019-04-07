@@ -24,7 +24,7 @@ public class Scenario extends Baseclass {
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioTrigger.class,mappedBy = "scenario")
+	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenario")
 	private List<ScenarioToTrigger> scenarioToTriggers=new ArrayList<>();
 
 	@JsonIgnore
@@ -42,7 +42,7 @@ public class Scenario extends Baseclass {
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioTrigger.class,mappedBy = "scenario")
+	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenario")
 	public List<ScenarioToTrigger> getScenarioToTriggers() {
 		return scenarioToTriggers;
 	}
