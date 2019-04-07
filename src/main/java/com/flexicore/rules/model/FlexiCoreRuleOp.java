@@ -22,11 +22,11 @@ public class FlexiCoreRuleOp extends FlexiCoreRule {
 
 	private RuleOpType ruleOpType;
 
-	@OneToMany(targetEntity = FlexiCoreRule.class,mappedBy ="ruleSet" )
+	@OneToMany(targetEntity = FlexiCoreRule.class,mappedBy ="ruleToEval" )
 	@JsonIgnore
 	private List<FlexiCoreRuleLink> andRules=new ArrayList<>();
 
-	@OneToMany(targetEntity = FlexiCoreRule.class,mappedBy ="ruleSet" )
+	@OneToMany(targetEntity = FlexiCoreRule.class,mappedBy ="ruleToEval" )
 	@JsonIgnore
 	public List<FlexiCoreRuleLink> getAndRules() {
 		return andRules;
