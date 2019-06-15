@@ -7,19 +7,19 @@
 package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.flexicore.model.Baseclass;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
-
+@Schema(description = "A RuleOP provides a convenient way to create multi rules expressions, as it extends FlexiCoreRule, it can be used as such")
 @SuppressWarnings("serial")
 @Entity
 public class FlexiCoreRuleOp extends FlexiCoreRule {
 	private static FlexiCoreRuleOp s_Singleton=new FlexiCoreRuleOp();
 	public  static FlexiCoreRuleOp s() {return s_Singleton;}
-
+	@Schema(description = "The type of this RuleOPType, this is NOT, AND, OR")
 	private RuleOpType ruleOpType;
 
 	@OneToMany(targetEntity = FlexiCoreRuleLink.class,mappedBy ="ruleToEval" )

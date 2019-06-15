@@ -7,10 +7,11 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
+@Schema(name = "ScenarioToTrigger",description = "Links a Scenario to a ScenarioTrigger, these are connected M2M")
 @SuppressWarnings("serial")
 @Entity
 public class ScenarioToTrigger extends Baseclass {
@@ -25,7 +26,7 @@ public class ScenarioToTrigger extends Baseclass {
 	private ScenarioTrigger scenarioTrigger;
 
 	@ManyToOne(targetEntity = Scenario.class)
-
+	@Schema(name = "Scenario",description = "The connected Scenario by this link")
 	public Scenario getScenario() {
 		return scenario;
 	}
@@ -34,6 +35,8 @@ public class ScenarioToTrigger extends Baseclass {
 		this.scenario = scenario;
 		return (T) this;
 	}
+
+	@Schema(name = "ScenarioTrigger",description = "The connected ScenarioTrigger by this link")
 
 	@ManyToOne(targetEntity = ScenarioTrigger.class)
 	public ScenarioTrigger getScenarioTrigger() {

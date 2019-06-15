@@ -7,11 +7,13 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
+@Schema(name = "ScenarioToAction link",description = "Many to Many links between Scenarios and ScenarioActions, note that the same action can be reused in many Scenarios")
 @Entity
 public class ScenarioToAction extends Baseclass {
 	private static ScenarioToAction s_Singleton=new ScenarioToAction();
@@ -25,7 +27,7 @@ public class ScenarioToAction extends Baseclass {
 	private ScenarioAction scenarioAction;
 
 	@ManyToOne(targetEntity = Scenario.class)
-
+	@Schema(name="Connected Scenario",description = "The referred to Scenario")
 	public Scenario getScenario() {
 		return scenario;
 	}
@@ -34,7 +36,7 @@ public class ScenarioToAction extends Baseclass {
 		this.scenario = scenario;
 		return (T) this;
 	}
-
+@Schema(name = "Connected ScenarioAction",description = "A single ScenarioAction referred to by this ling")
 	@ManyToOne(targetEntity = ScenarioAction.class)
 	public ScenarioAction getScenarioAction() {
 		return scenarioAction;

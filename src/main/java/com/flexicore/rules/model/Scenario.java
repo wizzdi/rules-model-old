@@ -8,6 +8,7 @@ package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -16,11 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
+@Schema(name="Scenario", description = "Scenario is the parent Class for rules evaluation" +
+		"It is connected to triggers (multiple of) and to actions, when a scenario is evaluated to true, actions are fired."+
+		" A Scenario can be created with name and description and later updated to include a RuleID, The Rule is either a single rule evaluated by a Javascript expression or " +
+		"one of NOT,AND,OR that can be the root for a more complex expression")
 @Entity
 public class Scenario extends Baseclass {
 	private static Scenario s_Singleton=new Scenario();
 	public  static Scenario s() {return s_Singleton;}
-
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
 	@JsonIgnore
@@ -31,6 +35,7 @@ public class Scenario extends Baseclass {
 	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenario")
 	private List<ScenarioToAction> scenarioToActions=new ArrayList<>();
 
+	@Schema(name="FlexiCoreRule ",description = "A single FlexiCoreRule or RuleOp (which extends FlexiCoreRule anyway) that is evaluated ")
 
 	public FlexiCoreRule getFlexiCoreRule() {
 		return flexiCoreRule;
