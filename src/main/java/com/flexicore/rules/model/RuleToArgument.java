@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -16,7 +17,7 @@ import javax.persistence.ManyToOne;
 public class RuleToArgument extends Baseclass {
 	private static RuleToArgument s_Singleton=new RuleToArgument();
 	public  static RuleToArgument s() {return s_Singleton;}
-
+	@Schema(name="Ordinal",description = "The ordinal must be unique and must be known by the JS script evaluating the rule")
 	private int ordinal;
 
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
@@ -24,6 +25,7 @@ public class RuleToArgument extends Baseclass {
 	@ManyToOne(targetEntity = FlexiCoreRuleArgument.class)
 
 	private FlexiCoreRuleArgument flexiCoreRuleArgument;
+	@Schema(name="FlexiCoreRule",description = "The linked FlexiCoreRule, note that a FlexiCoreRule will always transfer to Javascript all the arguments it is linked with")
 
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	public FlexiCoreRule getFlexiCoreRule() {
@@ -34,6 +36,7 @@ public class RuleToArgument extends Baseclass {
 		this.flexiCoreRule = flexiCoreRule;
 		return (T) this;
 	}
+	@Schema(name="FlexiCoreRuleArgument",description = "The linked RuleArgument, note that a RuleArgument can be used with with other rules.")
 
 	@ManyToOne(targetEntity = FlexiCoreRuleArgument.class)
 	public FlexiCoreRuleArgument getFlexiCoreRuleArgument() {
@@ -44,6 +47,7 @@ public class RuleToArgument extends Baseclass {
 		this.flexiCoreRuleArgument = flexiCoreRuleArgument;
 		return (T) this;
 	}
+	@Schema(name="Ordinal",description = "The ordinal must be unique and must be known by the JS script evaluating the rule")
 
 	public int getOrdinal() {
 		return ordinal;

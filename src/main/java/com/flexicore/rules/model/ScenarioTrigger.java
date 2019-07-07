@@ -8,13 +8,16 @@ package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
-
+@Schema(name = "ScenarioTrigger",description = "A ScenarioTrigger triggers Scenario evaluation when triggered." +
+		"Triggers can be created by name using the CRUD API and fired by several entities in the system including " +
+		"Schedules, ScenarioActions(!!) and external events ")
 @SuppressWarnings("serial")
 @Entity
 public class ScenarioTrigger extends Baseclass {

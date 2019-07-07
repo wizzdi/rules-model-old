@@ -6,18 +6,11 @@
  ******************************************************************************/
 package com.flexicore.rules.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.flexicore.model.Baseclass;
-import com.flexicore.model.FileResource;
 import com.flexicore.model.dynamic.DynamicExecution;
-import com.flexicore.model.dynamic.ExecutionParametersHolder;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
-
+@Schema(description = "An Argument to a Script based Rule, see DynamicExecution it extends")
 @SuppressWarnings("serial")
 @Entity
 public class FlexiCoreRuleArgument extends Baseclass {
