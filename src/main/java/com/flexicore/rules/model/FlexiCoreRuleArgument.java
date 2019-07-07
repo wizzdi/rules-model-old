@@ -6,10 +6,13 @@
  ******************************************************************************/
 package com.flexicore.rules.model;
 
+import com.flexicore.model.Baseclass;
 import com.flexicore.model.dynamic.DynamicExecution;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 @Schema(description = "An Argument to a Script based Rule, see DynamicExecution it extends")
 @SuppressWarnings("serial")
 @Entity
