@@ -20,11 +20,21 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 @Entity
-public class FlexiCoreRuleArgument extends DynamicExecution {
+public class FlexiCoreRuleArgument extends Baseclass {
 	private static FlexiCoreRuleArgument s_Singleton=new FlexiCoreRuleArgument();
 	public  static FlexiCoreRuleArgument s() {return s_Singleton;}
 
 
+	@ManyToOne(targetEntity = DynamicExecution.class)
+	private DynamicExecution dynamicExecution;
 
+	@ManyToOne(targetEntity = DynamicExecution.class)
+	public DynamicExecution getDynamicExecution() {
+		return dynamicExecution;
+	}
 
+	public <T extends FlexiCoreRuleArgument> T setDynamicExecution(DynamicExecution dynamicExecution) {
+		this.dynamicExecution = dynamicExecution;
+		return (T) this;
+	}
 }
