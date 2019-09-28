@@ -22,6 +22,8 @@ public class ScenarioToTrigger extends Baseclass {
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
 
+	private boolean enabled;
+
 	@ManyToOne(targetEntity = ScenarioTrigger.class)
 	private ScenarioTrigger scenarioTrigger;
 
@@ -45,6 +47,15 @@ public class ScenarioToTrigger extends Baseclass {
 
 	public <T extends ScenarioToTrigger> T setScenarioTrigger(ScenarioTrigger scenarioTrigger) {
 		this.scenarioTrigger = scenarioTrigger;
+		return (T) this;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public <T extends ScenarioToTrigger> T setEnabled(boolean enabled) {
+		this.enabled = enabled;
 		return (T) this;
 	}
 }
