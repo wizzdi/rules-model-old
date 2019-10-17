@@ -8,6 +8,7 @@ package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.dynamic.DynamicExecution;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -23,6 +24,13 @@ public class FlexiCoreRuleArgument extends Baseclass {
 
 	@ManyToOne(targetEntity = DynamicExecution.class)
 	private DynamicExecution dynamicExecution;
+
+	public FlexiCoreRuleArgument() {
+	}
+
+	public FlexiCoreRuleArgument(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	@ManyToOne(targetEntity = DynamicExecution.class)
 	public DynamicExecution getDynamicExecution() {

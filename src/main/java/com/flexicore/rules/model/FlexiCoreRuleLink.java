@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -24,6 +25,13 @@ public class FlexiCoreRuleLink extends Baseclass {
 	@Schema(description = "The parent RuleOp connected, for example an AND RuleOp will evaluate all children and return true only of all its children rules are evaluated to true")
 	@ManyToOne(targetEntity = FlexiCoreRuleOp.class)
 	private FlexiCoreRuleOp ruleOp;
+
+	public FlexiCoreRuleLink() {
+	}
+
+	public FlexiCoreRuleLink(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	public FlexiCoreRule getRuleToEval() {

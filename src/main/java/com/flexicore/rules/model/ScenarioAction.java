@@ -9,6 +9,7 @@ package com.flexicore.rules.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.dynamic.DynamicExecution;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -27,6 +28,12 @@ public class ScenarioAction extends Baseclass {
 	@ManyToOne(targetEntity = DynamicExecution.class)
 	private DynamicExecution dynamicExecution;
 
+	public ScenarioAction() {
+	}
+
+	public ScenarioAction(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	@JsonIgnore
 	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenarioAction")

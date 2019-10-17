@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -23,10 +24,16 @@ public class RuleToArgument extends Baseclass {
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
 	@ManyToOne(targetEntity = FlexiCoreRuleArgument.class)
-
 	private FlexiCoreRuleArgument flexiCoreRuleArgument;
-	@Schema(name="FlexiCoreRule",description = "The linked FlexiCoreRule, note that a FlexiCoreRule will always transfer to Javascript all the arguments it is linked with")
 
+	public RuleToArgument() {
+	}
+
+	public RuleToArgument(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
+
+	@Schema(name="FlexiCoreRule",description = "The linked FlexiCoreRule, note that a FlexiCoreRule will always transfer to Javascript all the arguments it is linked with")
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	public FlexiCoreRule getFlexiCoreRule() {
 		return flexiCoreRule;

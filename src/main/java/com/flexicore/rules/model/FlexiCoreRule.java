@@ -9,6 +9,7 @@ package com.flexicore.rules.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.FileResource;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -31,6 +32,14 @@ public class FlexiCoreRule extends Baseclass {
 	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
 	@JsonIgnore
 	private List<RuleToArgument> ruleToExecutionParameters=new ArrayList<>();
+
+	public FlexiCoreRule() {
+	}
+
+	public FlexiCoreRule(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
+
 	@Schema(description = "Arguments to the Java script rules, see RuleToArgument")
 	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
 	@JsonIgnore

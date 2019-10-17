@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -26,6 +27,13 @@ public class ScenarioToTrigger extends Baseclass {
 
 	@ManyToOne(targetEntity = ScenarioTrigger.class)
 	private ScenarioTrigger scenarioTrigger;
+
+	public ScenarioToTrigger() {
+	}
+
+	public ScenarioToTrigger(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	@ManyToOne(targetEntity = Scenario.class)
 	@Schema(name = "Scenario",description = "The connected Scenario by this link")

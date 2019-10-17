@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -29,6 +30,13 @@ public class ScenarioToAction extends Baseclass {
 
     @ManyToOne(targetEntity = ScenarioAction.class)
     private ScenarioAction scenarioAction;
+
+    public ScenarioToAction() {
+    }
+
+    public ScenarioToAction(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     @ManyToOne(targetEntity = Scenario.class)
     @Schema(name = "Connected Scenario", description = "The referred to Scenario")

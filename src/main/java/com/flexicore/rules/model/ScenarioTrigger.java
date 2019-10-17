@@ -8,6 +8,7 @@ package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -23,6 +24,13 @@ import java.util.List;
 public class ScenarioTrigger extends Baseclass {
 	private static ScenarioTrigger s_Singleton=new ScenarioTrigger();
 	public  static ScenarioTrigger s() {return s_Singleton;}
+
+	public ScenarioTrigger() {
+	}
+
+	public ScenarioTrigger(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	private String eventCanonicalClassName;
 

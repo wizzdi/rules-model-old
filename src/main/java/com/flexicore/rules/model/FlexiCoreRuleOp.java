@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -25,6 +26,13 @@ public class FlexiCoreRuleOp extends FlexiCoreRule {
 	@OneToMany(targetEntity = FlexiCoreRuleLink.class,mappedBy ="ruleToEval" )
 	@JsonIgnore
 	private List<FlexiCoreRuleLink> andRules=new ArrayList<>();
+
+	public FlexiCoreRuleOp() {
+	}
+
+	public FlexiCoreRuleOp(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	@OneToMany(targetEntity = FlexiCoreRuleLink.class,mappedBy ="ruleToEval" )
 	@JsonIgnore

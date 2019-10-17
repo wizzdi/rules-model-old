@@ -8,6 +8,7 @@ package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
@@ -34,6 +35,13 @@ public class Scenario extends Baseclass {
 	@JsonIgnore
 	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenario")
 	private List<ScenarioToAction> scenarioToActions=new ArrayList<>();
+
+	public Scenario() {
+	}
+
+	public Scenario(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
 	@Schema(name="FlexiCoreRule ",description = "A single FlexiCoreRule or RuleOp (which extends FlexiCoreRule anyway) that is evaluated ")
 
