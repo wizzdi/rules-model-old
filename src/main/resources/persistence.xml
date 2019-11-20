@@ -16,6 +16,7 @@
         <class>com.flexicore.rules.model.ScenarioToTrigger</class>
         <class>com.flexicore.rules.model.ScenarioToAction</class>
         <class>com.flexicore.rules.model.ScenarioAction</class>
+        <class>com.flexicore.model.FileResource</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 

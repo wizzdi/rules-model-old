@@ -28,6 +28,9 @@ public class FlexiCoreRule extends Baseclass {
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource evaluationScript;
 
+	@ManyToOne(targetEntity = FileResource.class)
+	private FileResource logFileResource;
+
 	@Schema(description = "Arguments to the Java script rules, see RuleToArgument")
 	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
 	@JsonIgnore
@@ -59,6 +62,16 @@ public class FlexiCoreRule extends Baseclass {
 
 	public <T extends FlexiCoreRule> T setEvaluationScript(FileResource evaluationScript) {
 		this.evaluationScript = evaluationScript;
+		return (T) this;
+	}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	public FileResource getLogFileResource() {
+		return logFileResource;
+	}
+
+	public <T extends FlexiCoreRule> T setLogFileResource(FileResource logFileResource) {
+		this.logFileResource = logFileResource;
 		return (T) this;
 	}
 }
