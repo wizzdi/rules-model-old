@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
-@Schema(description = "A RuleOP provides a convenient way to create multi rules expressions, as it extends FlexiCoreRule, it can be used as such")
+@Schema(description = "A RuleOP provides a convenient way to create multi rules expressions, as it extends FlexiCore Rule, it can be used as such")
 @SuppressWarnings("serial")
 @Entity
 public class FlexiCoreRuleOp extends FlexiCoreRule {
