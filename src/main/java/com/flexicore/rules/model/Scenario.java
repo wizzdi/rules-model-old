@@ -12,6 +12,7 @@ import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ import java.util.List;
 public class Scenario extends Baseclass {
 	private static Scenario s_Singleton=new Scenario();
 	public  static Scenario s() {return s_Singleton;}
+	@Lob
+	private String scenarioHint;
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
 	@JsonIgnore
@@ -73,6 +76,16 @@ public class Scenario extends Baseclass {
 
 	public <T extends Scenario> T setScenarioToActions(List<ScenarioToAction> scenarioToActions) {
 		this.scenarioToActions = scenarioToActions;
+		return (T) this;
+	}
+
+	@Lob
+	public String getScenarioHint() {
+		return scenarioHint;
+	}
+
+	public <T extends Scenario> T setScenarioHint(String scenarioHint) {
+		this.scenarioHint = scenarioHint;
 		return (T) this;
 	}
 }
