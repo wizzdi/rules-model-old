@@ -8,6 +8,7 @@ package com.flexicore.rules.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.model.Baseclass;
+import com.flexicore.model.FileResource;
 import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -29,6 +30,8 @@ public class Scenario extends Baseclass {
 	public  static Scenario s() {return s_Singleton;}
 	@Lob
 	private String scenarioHint;
+	@ManyToOne(targetEntity = FileResource.class)
+	private FileResource actionManagerScript;
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
 	@JsonIgnore
@@ -86,6 +89,16 @@ public class Scenario extends Baseclass {
 
 	public <T extends Scenario> T setScenarioHint(String scenarioHint) {
 		this.scenarioHint = scenarioHint;
+		return (T) this;
+	}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	public FileResource getActionManagerScript() {
+		return actionManagerScript;
+	}
+
+	public <T extends Scenario> T setActionManagerScript(FileResource actionManagerScript) {
+		this.actionManagerScript = actionManagerScript;
 		return (T) this;
 	}
 }
