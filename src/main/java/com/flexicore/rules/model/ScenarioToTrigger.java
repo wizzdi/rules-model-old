@@ -7,6 +7,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.model.FileResource;
 import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -22,6 +23,9 @@ public class ScenarioToTrigger extends Baseclass {
 
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
+
+	@ManyToOne(targetEntity = FileResource.class)
+	private FileResource triggerManagerScript;
 
 	private boolean enabled;
 
@@ -64,6 +68,16 @@ public class ScenarioToTrigger extends Baseclass {
 
 	public <T extends ScenarioToTrigger> T setEnabled(boolean enabled) {
 		this.enabled = enabled;
+		return (T) this;
+	}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	public FileResource getTriggerManagerScript() {
+		return triggerManagerScript;
+	}
+
+	public <T extends ScenarioToTrigger> T setTriggerManagerScript(FileResource triggerManagerScript) {
+		this.triggerManagerScript = triggerManagerScript;
 		return (T) this;
 	}
 }

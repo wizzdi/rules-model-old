@@ -30,6 +30,7 @@ public class Scenario extends Baseclass {
 	public  static Scenario s() {return s_Singleton;}
 	@Lob
 	private String scenarioHint;
+
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource actionManagerScript;
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
