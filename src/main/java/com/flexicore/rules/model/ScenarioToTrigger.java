@@ -24,8 +24,10 @@ public class ScenarioToTrigger extends Baseclass {
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
 
-	@ManyToOne(targetEntity = FileResource.class)
-	private FileResource triggerManagerScript;
+	@ManyToOne(targetEntity = TriggerManager.class)
+	private TriggerManager triggerManager;
+
+
 
 	private boolean enabled;
 
@@ -71,13 +73,13 @@ public class ScenarioToTrigger extends Baseclass {
 		return (T) this;
 	}
 
-	@ManyToOne(targetEntity = FileResource.class)
-	public FileResource getTriggerManagerScript() {
-		return triggerManagerScript;
+	@ManyToOne(targetEntity = TriggerManager.class)
+	public TriggerManager getTriggerManager() {
+		return triggerManager;
 	}
 
-	public <T extends ScenarioToTrigger> T setTriggerManagerScript(FileResource triggerManagerScript) {
-		this.triggerManagerScript = triggerManagerScript;
+	public <T extends ScenarioToTrigger> T setTriggerManager(TriggerManager triggerManager) {
+		this.triggerManager = triggerManager;
 		return (T) this;
 	}
 }
