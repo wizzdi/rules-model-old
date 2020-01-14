@@ -29,6 +29,8 @@ public class ScenarioToTrigger extends Baseclass {
 
 
 
+
+
 	private boolean enabled;
 
 	@ManyToOne(targetEntity = ScenarioTrigger.class)
