@@ -6,21 +6,23 @@ import com.flexicore.interfaces.dynamic.IdRefFieldInfo;
 import com.flexicore.model.Baseclass;
 import com.flexicore.model.dynamic.ExecutionParametersHolder;
 
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Entity
 public class GenericTriggerRequest extends ExecutionParametersHolder {
     @IdRefFieldInfo(refType = Baseclass.class)
-    @ManyToOne(targetEntity = GenericTriggerIdRef.class)
+    @OneToMany(targetEntity = GenericTriggerIdRef.class,mappedBy = "genericTriggerRequest",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<GenericTriggerIdRef> baseclassIds=new HashSet<>();
     @JsonIgnore
+    @Transient
     private List<Baseclass> baseclasses;
     @FieldInfo
     private String userData;
 
-    @ManyToOne(targetEntity = GenericTriggerIdRef.class)
+    @OneToMany(targetEntity = GenericTriggerIdRef.class,mappedBy = "genericTriggerRequest",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     public Set<GenericTriggerIdRef> getBaseclassIds() {
         return baseclassIds;
     }
@@ -40,6 +42,7 @@ public class GenericTriggerRequest extends ExecutionParametersHolder {
     }
 
     @JsonIgnore
+    @Transient
     public List<Baseclass> getBaseclasses() {
         return baseclasses;
     }

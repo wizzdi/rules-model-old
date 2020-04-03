@@ -4,8 +4,6 @@ package com.flexicore.rules.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flexicore.interfaces.dynamic.FieldInfo;
 import com.flexicore.model.Baseclass;
-import com.flexicore.model.FilteringInformationHolder;
-
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
