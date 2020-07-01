@@ -5,22 +5,15 @@
     <persistence-unit name="primary">
 
 
-        <class>com.flexicore.rules.model.FlexiCoreRule</class>
-        <class>com.flexicore.rules.model.FlexiCoreRuleOp</class>
-        <class>com.flexicore.rules.model.FlexiCoreRuleLink</class>
-        <class>com.flexicore.rules.model.RuleToArgument</class>
-        <class>com.flexicore.rules.model.FlexiCoreRuleArgument</class>
+
         <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
         <class>com.flexicore.rules.model.Scenario</class>
+        <class>com.flexicore.rules.model.ScenarioTriggerType</class>
         <class>com.flexicore.rules.model.ScenarioTrigger</class>
         <class>com.flexicore.rules.model.ScenarioToTrigger</class>
         <class>com.flexicore.rules.model.ScenarioToAction</class>
         <class>com.flexicore.rules.model.ScenarioAction</class>
         <class>com.flexicore.model.FileResource</class>
-        <class>com.flexicore.rules.model.TriggerManager</class>
-        <class>com.flexicore.rules.model.GenericTrigger</class>
-        <class>com.flexicore.rules.model.GenericTriggerIdRef</class>
-        <class>com.flexicore.rules.model.GenericTriggerRequest</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 

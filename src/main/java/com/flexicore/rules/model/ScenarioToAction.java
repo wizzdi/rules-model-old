@@ -14,15 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
-@Schema(name = "ScenarioToAction link", description = "Many to Many links between Scenarios and ScenarioActions, note that the same action can be reused in many Scenarios")
 @Entity
 public class ScenarioToAction extends Baseclass {
-	private static ScenarioToAction s_Singleton = new ScenarioToAction();
-
-	public static ScenarioToAction s() {
-		return s_Singleton;
-	}
-
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
 	private boolean enabled;

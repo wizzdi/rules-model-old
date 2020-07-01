@@ -20,23 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-@Schema(name = "Scenario", description = "Scenario is the parent Class for rules evaluation"
-		+ "It is connected to triggers (multiple of) and to actions, when a scenario is evaluated to true, actions are fired."
-		+ " A Scenario can be created with name and description and later updated to include a RuleID, The Rule is either a single rule evaluated by a Javascript expression or "
-		+ "one of NOT,AND,OR that can be the root for a more complex expression")
+
 @Entity
 public class Scenario extends Baseclass {
-	private static Scenario s_Singleton = new Scenario();
-	public static Scenario s() {
-		return s_Singleton;
-	}
+
 	@Lob
 	private String scenarioHint;
 
-	@ManyToOne(targetEntity = FileResource.class)
-	private FileResource actionManagerScript;
-	@ManyToOne(targetEntity = FlexiCoreRule.class)
-	private FlexiCoreRule flexiCoreRule;
 	@JsonIgnore
 	@OneToMany(targetEntity = ScenarioToTrigger.class, mappedBy = "scenario")
 	private List<ScenarioToTrigger> scenarioToTriggers = new ArrayList<>();
@@ -46,6 +36,8 @@ public class Scenario extends Baseclass {
 	private List<ScenarioToAction> scenarioToActions = new ArrayList<>();
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource logFileResource;
+	@ManyToOne(targetEntity = FileResource.class)
+	private FileResource evaluatingJSCode;
 
 	public Scenario() {
 	}
@@ -54,15 +46,6 @@ public class Scenario extends Baseclass {
 		super(name, securityContext);
 	}
 
-	@Schema(name = "FlexiCoreRule ", description = "A single FlexiCoreRule or RuleOp (which extends FlexiCoreRule anyway) that is evaluated ")
-	public FlexiCoreRule getFlexiCoreRule() {
-		return flexiCoreRule;
-	}
-
-	public <T extends Scenario> T setFlexiCoreRule(FlexiCoreRule flexiCoreRule) {
-		this.flexiCoreRule = flexiCoreRule;
-		return (T) this;
-	}
 
 	@JsonIgnore
 	@OneToMany(targetEntity = ScenarioToTrigger.class, mappedBy = "scenario")
@@ -98,16 +81,6 @@ public class Scenario extends Baseclass {
 		return (T) this;
 	}
 
-	@ManyToOne(targetEntity = FileResource.class)
-	public FileResource getActionManagerScript() {
-		return actionManagerScript;
-	}
-
-	public <T extends Scenario> T setActionManagerScript(
-			FileResource actionManagerScript) {
-		this.actionManagerScript = actionManagerScript;
-		return (T) this;
-	}
 
 	@ManyToOne(targetEntity = FileResource.class)
 	public FileResource getLogFileResource() {
@@ -117,6 +90,16 @@ public class Scenario extends Baseclass {
 	public <T extends Scenario> T setLogFileResource(
 			FileResource logFileResource) {
 		this.logFileResource = logFileResource;
+		return (T) this;
+	}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	public FileResource getEvaluatingJSCode() {
+		return evaluatingJSCode;
+	}
+
+	public <T extends Scenario> T setEvaluatingJSCode(FileResource evaluatingJSCode) {
+		this.evaluatingJSCode = evaluatingJSCode;
 		return (T) this;
 	}
 }

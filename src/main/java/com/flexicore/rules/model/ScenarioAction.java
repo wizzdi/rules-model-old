@@ -19,13 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-@Schema(name = "Scenario Action", description = "an action executed when the Scenario is triggered and evaluated to true")
 @Entity
 public class ScenarioAction extends Baseclass {
-	private static ScenarioAction s_Singleton = new ScenarioAction();
-	public static ScenarioAction s() {
-		return s_Singleton;
-	}
 
 	@ManyToOne(targetEntity = DynamicExecution.class)
 	private DynamicExecution dynamicExecution;

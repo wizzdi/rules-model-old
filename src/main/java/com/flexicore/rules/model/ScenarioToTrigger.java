@@ -7,31 +7,24 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
-import com.flexicore.model.FileResource;
 import com.flexicore.security.SecurityContext;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-@Schema(name = "ScenarioToTrigger", description = "Links a Scenario to a ScenarioTrigger, these are connected M2M")
 @SuppressWarnings("serial")
 @Entity
 public class ScenarioToTrigger extends Baseclass {
-	private static ScenarioToTrigger s_Singleton = new ScenarioToTrigger();
-	public static ScenarioToTrigger s() {
-		return s_Singleton;
-	}
 
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
 
-	@ManyToOne(targetEntity = TriggerManager.class)
-	private TriggerManager triggerManager;
-
 	private boolean enabled;
+	private int ordinal;
+	private boolean firing;
 
-	@ManyToOne(targetEntity = ScenarioTrigger.class)
+	@ManyToOne(targetEntity = ScenarioTriggerType.class)
 	private ScenarioTrigger scenarioTrigger;
 
 	public ScenarioToTrigger() {
@@ -53,7 +46,7 @@ public class ScenarioToTrigger extends Baseclass {
 	}
 
 	@Schema(name = "ScenarioTrigger", description = "The connected ScenarioTrigger by this link")
-	@ManyToOne(targetEntity = ScenarioTrigger.class)
+	@ManyToOne(targetEntity = ScenarioTriggerType.class)
 	public ScenarioTrigger getScenarioTrigger() {
 		return scenarioTrigger;
 	}
@@ -73,14 +66,21 @@ public class ScenarioToTrigger extends Baseclass {
 		return (T) this;
 	}
 
-	@ManyToOne(targetEntity = TriggerManager.class)
-	public TriggerManager getTriggerManager() {
-		return triggerManager;
+	public int getOrdinal() {
+		return ordinal;
 	}
 
-	public <T extends ScenarioToTrigger> T setTriggerManager(
-			TriggerManager triggerManager) {
-		this.triggerManager = triggerManager;
+	public <T extends ScenarioToTrigger> T setOrdinal(int ordinal) {
+		this.ordinal = ordinal;
+		return (T) this;
+	}
+
+	public boolean isFiring() {
+		return firing;
+	}
+
+	public <T extends ScenarioToTrigger> T setFiring(boolean firing) {
+		this.firing = firing;
 		return (T) this;
 	}
 }
