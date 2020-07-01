@@ -12,12 +12,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+
 @Schema(description = "Creates the required link between RuleOp and its optional children creating a hierarchy ")
 @SuppressWarnings("serial")
 @Entity
 public class FlexiCoreRuleLink extends Baseclass {
-	private static FlexiCoreRuleLink s_Singleton=new FlexiCoreRuleLink();
-	public  static FlexiCoreRuleLink s() {return s_Singleton;}
+	private static FlexiCoreRuleLink s_Singleton = new FlexiCoreRuleLink();
+	public static FlexiCoreRuleLink s() {
+		return s_Singleton;
+	}
 
 	@Schema(description = "List of rules to evaluate")
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
@@ -38,7 +41,8 @@ public class FlexiCoreRuleLink extends Baseclass {
 		return ruleToEval;
 	}
 
-	public <T extends FlexiCoreRuleLink> T setRuleToEval(FlexiCoreRule ruleToEval) {
+	public <T extends FlexiCoreRuleLink> T setRuleToEval(
+			FlexiCoreRule ruleToEval) {
 		this.ruleToEval = ruleToEval;
 		return (T) this;
 	}

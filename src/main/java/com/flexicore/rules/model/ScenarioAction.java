@@ -19,11 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-@Schema (name = "Scenario Action",description = "an action executed when the Scenario is triggered and evaluated to true")
+@Schema(name = "Scenario Action", description = "an action executed when the Scenario is triggered and evaluated to true")
 @Entity
 public class ScenarioAction extends Baseclass {
-	private static ScenarioAction s_Singleton=new ScenarioAction();
-	public  static ScenarioAction s() {return s_Singleton;}
+	private static ScenarioAction s_Singleton = new ScenarioAction();
+	public static ScenarioAction s() {
+		return s_Singleton;
+	}
 
 	@ManyToOne(targetEntity = DynamicExecution.class)
 	private DynamicExecution dynamicExecution;
@@ -36,17 +38,18 @@ public class ScenarioAction extends Baseclass {
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenarioAction")
-	private List<ScenarioToAction> scenarioToActions=new ArrayList<>();
+	@OneToMany(targetEntity = ScenarioToAction.class, mappedBy = "scenarioAction")
+	private List<ScenarioToAction> scenarioToActions = new ArrayList<>();
 
-	@Schema(name = "Scenarios",description = "A list of ScenarioToAction instances of all Scenarios connected to this ScenarioAction")
+	@Schema(name = "Scenarios", description = "A list of ScenarioToAction instances of all Scenarios connected to this ScenarioAction")
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenarioAction")
+	@OneToMany(targetEntity = ScenarioToAction.class, mappedBy = "scenarioAction")
 	public List<ScenarioToAction> getScenarioToActions() {
 		return scenarioToActions;
 	}
 
-	public <T extends ScenarioAction> T setScenarioToActions(List<ScenarioToAction> scenarioToActions) {
+	public <T extends ScenarioAction> T setScenarioToActions(
+			List<ScenarioToAction> scenarioToActions) {
 		this.scenarioToActions = scenarioToActions;
 		return (T) this;
 	}
@@ -56,7 +59,8 @@ public class ScenarioAction extends Baseclass {
 		return dynamicExecution;
 	}
 
-	public <T extends ScenarioAction> T setDynamicExecution(DynamicExecution dynamicExecution) {
+	public <T extends ScenarioAction> T setDynamicExecution(
+			DynamicExecution dynamicExecution) {
 		this.dynamicExecution = dynamicExecution;
 		return (T) this;
 	}

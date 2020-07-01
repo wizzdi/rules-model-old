@@ -14,18 +14,21 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+
 @Schema(description = "A RuleOP provides a convenient way to create multi rules expressions, as it extends FlexiCore Rule, it can be used as such")
 @SuppressWarnings("serial")
 @Entity
 public class FlexiCoreRuleOp extends FlexiCoreRule {
-	private static FlexiCoreRuleOp s_Singleton=new FlexiCoreRuleOp();
-	public  static FlexiCoreRuleOp s() {return s_Singleton;}
+	private static FlexiCoreRuleOp s_Singleton = new FlexiCoreRuleOp();
+	public static FlexiCoreRuleOp s() {
+		return s_Singleton;
+	}
 	@Schema(description = "The type of this RuleOPType, this is NOT, AND, OR")
 	private RuleOpType ruleOpType;
 
-	@OneToMany(targetEntity = FlexiCoreRuleLink.class,mappedBy ="ruleToEval" )
+	@OneToMany(targetEntity = FlexiCoreRuleLink.class, mappedBy = "ruleToEval")
 	@JsonIgnore
-	private List<FlexiCoreRuleLink> andRules=new ArrayList<>();
+	private List<FlexiCoreRuleLink> andRules = new ArrayList<>();
 
 	public FlexiCoreRuleOp() {
 	}
@@ -34,13 +37,14 @@ public class FlexiCoreRuleOp extends FlexiCoreRule {
 		super(name, securityContext);
 	}
 
-	@OneToMany(targetEntity = FlexiCoreRuleLink.class,mappedBy ="ruleToEval" )
+	@OneToMany(targetEntity = FlexiCoreRuleLink.class, mappedBy = "ruleToEval")
 	@JsonIgnore
 	public List<FlexiCoreRuleLink> getAndRules() {
 		return andRules;
 	}
 
-	public <T extends FlexiCoreRuleOp> T setAndRules(List<FlexiCoreRuleLink> andRules) {
+	public <T extends FlexiCoreRuleOp> T setAndRules(
+			List<FlexiCoreRuleLink> andRules) {
 		this.andRules = andRules;
 		return (T) this;
 	}

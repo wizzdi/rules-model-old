@@ -18,9 +18,10 @@ import javax.persistence.ManyToOne;
 @SuppressWarnings("serial")
 @Entity
 public class FlexiCoreRuleArgument extends Baseclass {
-	private static FlexiCoreRuleArgument s_Singleton=new FlexiCoreRuleArgument();
-	public  static FlexiCoreRuleArgument s() {return s_Singleton;}
-
+	private static FlexiCoreRuleArgument s_Singleton = new FlexiCoreRuleArgument();
+	public static FlexiCoreRuleArgument s() {
+		return s_Singleton;
+	}
 
 	@ManyToOne(targetEntity = DynamicExecution.class)
 	private DynamicExecution dynamicExecution;
@@ -37,7 +38,8 @@ public class FlexiCoreRuleArgument extends Baseclass {
 		return dynamicExecution;
 	}
 
-	public <T extends FlexiCoreRuleArgument> T setDynamicExecution(DynamicExecution dynamicExecution) {
+	public <T extends FlexiCoreRuleArgument> T setDynamicExecution(
+			DynamicExecution dynamicExecution) {
 		this.dynamicExecution = dynamicExecution;
 		return (T) this;
 	}

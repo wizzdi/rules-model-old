@@ -16,14 +16,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
-@Schema(name = "ScenarioTrigger",description = "A ScenarioTrigger triggers Scenario evaluation when triggered." +
-		"Triggers can be created by name using the CRUD API and fired by several entities in the system including " +
-		"Schedules, ScenarioActions(!!) and external events ")
+
+@Schema(name = "ScenarioTrigger", description = "A ScenarioTrigger triggers Scenario evaluation when triggered."
+		+ "Triggers can be created by name using the CRUD API and fired by several entities in the system including "
+		+ "Schedules, ScenarioActions(!!) and external events ")
 @SuppressWarnings("serial")
 @Entity
 public class ScenarioTrigger extends Baseclass {
-	private static ScenarioTrigger s_Singleton=new ScenarioTrigger();
-	public  static ScenarioTrigger s() {return s_Singleton;}
+	private static ScenarioTrigger s_Singleton = new ScenarioTrigger();
+	public static ScenarioTrigger s() {
+		return s_Singleton;
+	}
 
 	public ScenarioTrigger() {
 	}
@@ -35,25 +38,27 @@ public class ScenarioTrigger extends Baseclass {
 	private String eventCanonicalClassName;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenarioTrigger")
-	private List<ScenarioToTrigger> scenarioToTriggers=new ArrayList<>();
+	@OneToMany(targetEntity = ScenarioToTrigger.class, mappedBy = "scenarioTrigger")
+	private List<ScenarioToTrigger> scenarioToTriggers = new ArrayList<>();
 
 	public String getEventCanonicalClassName() {
 		return eventCanonicalClassName;
 	}
 
-	public <T extends ScenarioTrigger> T setEventCanonicalClassName(String eventCanonicalClassName) {
+	public <T extends ScenarioTrigger> T setEventCanonicalClassName(
+			String eventCanonicalClassName) {
 		this.eventCanonicalClassName = eventCanonicalClassName;
 		return (T) this;
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenarioTrigger")
+	@OneToMany(targetEntity = ScenarioToTrigger.class, mappedBy = "scenarioTrigger")
 	public List<ScenarioToTrigger> getScenarioToTriggers() {
 		return scenarioToTriggers;
 	}
 
-	public <T extends ScenarioTrigger> T setScenarioToTriggers(List<ScenarioToTrigger> scenarioToTriggers) {
+	public <T extends ScenarioTrigger> T setScenarioToTriggers(
+			List<ScenarioToTrigger> scenarioToTriggers) {
 		this.scenarioToTriggers = scenarioToTriggers;
 		return (T) this;
 	}

@@ -19,9 +19,10 @@ import java.util.List;
 @SuppressWarnings("serial")
 @Entity
 public class GenericTrigger extends ScenarioTrigger {
-	private static GenericTrigger s_Singleton=new GenericTrigger();
-	public  static GenericTrigger s() {return s_Singleton;}
-
+	private static GenericTrigger s_Singleton = new GenericTrigger();
+	public static GenericTrigger s() {
+		return s_Singleton;
+	}
 
 	public GenericTrigger() {
 	}
@@ -29,9 +30,5 @@ public class GenericTrigger extends ScenarioTrigger {
 	public GenericTrigger(String name, SecurityContext securityContext) {
 		super(name, securityContext);
 	}
-
-
-
-
 
 }

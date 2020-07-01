@@ -13,23 +13,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-@Schema(name = "ScenarioToTrigger",description = "Links a Scenario to a ScenarioTrigger, these are connected M2M")
+
+@Schema(name = "ScenarioToTrigger", description = "Links a Scenario to a ScenarioTrigger, these are connected M2M")
 @SuppressWarnings("serial")
 @Entity
 public class ScenarioToTrigger extends Baseclass {
-	private static ScenarioToTrigger s_Singleton=new ScenarioToTrigger();
-	public  static ScenarioToTrigger s() {return s_Singleton;}
-
+	private static ScenarioToTrigger s_Singleton = new ScenarioToTrigger();
+	public static ScenarioToTrigger s() {
+		return s_Singleton;
+	}
 
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
 
 	@ManyToOne(targetEntity = TriggerManager.class)
 	private TriggerManager triggerManager;
-
-
-
-
 
 	private boolean enabled;
 
@@ -44,7 +42,7 @@ public class ScenarioToTrigger extends Baseclass {
 	}
 
 	@ManyToOne(targetEntity = Scenario.class)
-	@Schema(name = "Scenario",description = "The connected Scenario by this link")
+	@Schema(name = "Scenario", description = "The connected Scenario by this link")
 	public Scenario getScenario() {
 		return scenario;
 	}
@@ -54,14 +52,14 @@ public class ScenarioToTrigger extends Baseclass {
 		return (T) this;
 	}
 
-	@Schema(name = "ScenarioTrigger",description = "The connected ScenarioTrigger by this link")
-
+	@Schema(name = "ScenarioTrigger", description = "The connected ScenarioTrigger by this link")
 	@ManyToOne(targetEntity = ScenarioTrigger.class)
 	public ScenarioTrigger getScenarioTrigger() {
 		return scenarioTrigger;
 	}
 
-	public <T extends ScenarioToTrigger> T setScenarioTrigger(ScenarioTrigger scenarioTrigger) {
+	public <T extends ScenarioToTrigger> T setScenarioTrigger(
+			ScenarioTrigger scenarioTrigger) {
 		this.scenarioTrigger = scenarioTrigger;
 		return (T) this;
 	}
@@ -80,7 +78,8 @@ public class ScenarioToTrigger extends Baseclass {
 		return triggerManager;
 	}
 
-	public <T extends ScenarioToTrigger> T setTriggerManager(TriggerManager triggerManager) {
+	public <T extends ScenarioToTrigger> T setTriggerManager(
+			TriggerManager triggerManager) {
 		this.triggerManager = triggerManager;
 		return (T) this;
 	}

@@ -20,14 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-@Schema(name="Scenario", description = "Scenario is the parent Class for rules evaluation" +
-		"It is connected to triggers (multiple of) and to actions, when a scenario is evaluated to true, actions are fired."+
-		" A Scenario can be created with name and description and later updated to include a RuleID, The Rule is either a single rule evaluated by a Javascript expression or " +
-		"one of NOT,AND,OR that can be the root for a more complex expression")
+@Schema(name = "Scenario", description = "Scenario is the parent Class for rules evaluation"
+		+ "It is connected to triggers (multiple of) and to actions, when a scenario is evaluated to true, actions are fired."
+		+ " A Scenario can be created with name and description and later updated to include a RuleID, The Rule is either a single rule evaluated by a Javascript expression or "
+		+ "one of NOT,AND,OR that can be the root for a more complex expression")
 @Entity
 public class Scenario extends Baseclass {
-	private static Scenario s_Singleton=new Scenario();
-	public  static Scenario s() {return s_Singleton;}
+	private static Scenario s_Singleton = new Scenario();
+	public static Scenario s() {
+		return s_Singleton;
+	}
 	@Lob
 	private String scenarioHint;
 
@@ -36,12 +38,12 @@ public class Scenario extends Baseclass {
 	@ManyToOne(targetEntity = FlexiCoreRule.class)
 	private FlexiCoreRule flexiCoreRule;
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenario")
-	private List<ScenarioToTrigger> scenarioToTriggers=new ArrayList<>();
+	@OneToMany(targetEntity = ScenarioToTrigger.class, mappedBy = "scenario")
+	private List<ScenarioToTrigger> scenarioToTriggers = new ArrayList<>();
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenario")
-	private List<ScenarioToAction> scenarioToActions=new ArrayList<>();
+	@OneToMany(targetEntity = ScenarioToAction.class, mappedBy = "scenario")
+	private List<ScenarioToAction> scenarioToActions = new ArrayList<>();
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource logFileResource;
 
@@ -52,8 +54,7 @@ public class Scenario extends Baseclass {
 		super(name, securityContext);
 	}
 
-	@Schema(name="FlexiCoreRule ",description = "A single FlexiCoreRule or RuleOp (which extends FlexiCoreRule anyway) that is evaluated ")
-
+	@Schema(name = "FlexiCoreRule ", description = "A single FlexiCoreRule or RuleOp (which extends FlexiCoreRule anyway) that is evaluated ")
 	public FlexiCoreRule getFlexiCoreRule() {
 		return flexiCoreRule;
 	}
@@ -64,23 +65,25 @@ public class Scenario extends Baseclass {
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenario")
+	@OneToMany(targetEntity = ScenarioToTrigger.class, mappedBy = "scenario")
 	public List<ScenarioToTrigger> getScenarioToTriggers() {
 		return scenarioToTriggers;
 	}
 
-	public <T extends Scenario> T setScenarioToTriggers(List<ScenarioToTrigger> scenarioToTriggers) {
+	public <T extends Scenario> T setScenarioToTriggers(
+			List<ScenarioToTrigger> scenarioToTriggers) {
 		this.scenarioToTriggers = scenarioToTriggers;
 		return (T) this;
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToAction.class,mappedBy = "scenario")
+	@OneToMany(targetEntity = ScenarioToAction.class, mappedBy = "scenario")
 	public List<ScenarioToAction> getScenarioToActions() {
 		return scenarioToActions;
 	}
 
-	public <T extends Scenario> T setScenarioToActions(List<ScenarioToAction> scenarioToActions) {
+	public <T extends Scenario> T setScenarioToActions(
+			List<ScenarioToAction> scenarioToActions) {
 		this.scenarioToActions = scenarioToActions;
 		return (T) this;
 	}
@@ -100,7 +103,8 @@ public class Scenario extends Baseclass {
 		return actionManagerScript;
 	}
 
-	public <T extends Scenario> T setActionManagerScript(FileResource actionManagerScript) {
+	public <T extends Scenario> T setActionManagerScript(
+			FileResource actionManagerScript) {
 		this.actionManagerScript = actionManagerScript;
 		return (T) this;
 	}
@@ -110,7 +114,8 @@ public class Scenario extends Baseclass {
 		return logFileResource;
 	}
 
-	public <T extends Scenario> T setLogFileResource(FileResource logFileResource) {
+	public <T extends Scenario> T setLogFileResource(
+			FileResource logFileResource) {
 		this.logFileResource = logFileResource;
 		return (T) this;
 	}

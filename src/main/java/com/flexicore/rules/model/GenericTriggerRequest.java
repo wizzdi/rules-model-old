@@ -13,50 +13,54 @@ import java.util.Set;
 
 @Entity
 public class GenericTriggerRequest extends ExecutionParametersHolder {
-    @IdRefFieldInfo(refType = Baseclass.class)
-    @OneToMany(targetEntity = GenericTriggerIdRef.class,mappedBy = "genericTriggerRequest",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<GenericTriggerIdRef> baseclassIds=new HashSet<>();
-    @JsonIgnore
-    @Transient
-    private List<Baseclass> baseclasses;
-    @FieldInfo
-    private String userData;
+	@IdRefFieldInfo(refType = Baseclass.class)
+	@OneToMany(targetEntity = GenericTriggerIdRef.class, mappedBy = "genericTriggerRequest", cascade = {
+			CascadeType.PERSIST, CascadeType.MERGE})
+	private Set<GenericTriggerIdRef> baseclassIds = new HashSet<>();
+	@JsonIgnore
+	@Transient
+	private List<Baseclass> baseclasses;
+	@FieldInfo
+	private String userData;
 
-    @OneToMany(targetEntity = GenericTriggerIdRef.class,mappedBy = "genericTriggerRequest",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    public Set<GenericTriggerIdRef> getBaseclassIds() {
-        return baseclassIds;
-    }
+	@OneToMany(targetEntity = GenericTriggerIdRef.class, mappedBy = "genericTriggerRequest", cascade = {
+			CascadeType.PERSIST, CascadeType.MERGE})
+	public Set<GenericTriggerIdRef> getBaseclassIds() {
+		return baseclassIds;
+	}
 
-    public <T extends GenericTriggerRequest> T setBaseclassIds(Set<GenericTriggerIdRef> baseclassIds) {
-        this.baseclassIds = baseclassIds;
-        return (T) this;
-    }
+	public <T extends GenericTriggerRequest> T setBaseclassIds(
+			Set<GenericTriggerIdRef> baseclassIds) {
+		this.baseclassIds = baseclassIds;
+		return (T) this;
+	}
 
-    public String getUserData() {
-        return userData;
-    }
+	public String getUserData() {
+		return userData;
+	}
 
-    public <T extends GenericTriggerRequest> T setUserData(String userData) {
-        this.userData = userData;
-        return (T) this;
-    }
+	public <T extends GenericTriggerRequest> T setUserData(String userData) {
+		this.userData = userData;
+		return (T) this;
+	}
 
-    @JsonIgnore
-    @Transient
-    public List<Baseclass> getBaseclasses() {
-        return baseclasses;
-    }
+	@JsonIgnore
+	@Transient
+	public List<Baseclass> getBaseclasses() {
+		return baseclasses;
+	}
 
-    public <T extends GenericTriggerRequest> T setBaseclasses(List<Baseclass> baseclasses) {
-        this.baseclasses = baseclasses;
-        return (T) this;
-    }
+	public <T extends GenericTriggerRequest> T setBaseclasses(
+			List<Baseclass> baseclasses) {
+		this.baseclasses = baseclasses;
+		return (T) this;
+	}
 
-    @Override
-    public void prepareForSave() {
-        super.prepareForSave();
-        for (GenericTriggerIdRef baseclassId : baseclassIds) {
-            baseclassId.prepareForSave(this);
-        }
-    }
+	@Override
+	public void prepareForSave() {
+		super.prepareForSave();
+		for (GenericTriggerIdRef baseclassId : baseclassIds) {
+			baseclassId.prepareForSave(this);
+		}
+	}
 }

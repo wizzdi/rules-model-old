@@ -22,18 +22,18 @@ import java.util.List;
 @Schema(description = "Describes a single rule, a rule is either NOT,AND,OR or it is a Javascript file.")
 @Entity
 public class FlexiCoreRule extends Baseclass {
-	private static FlexiCoreRule s_Singleton=new FlexiCoreRule();
-	public  static FlexiCoreRule s() {return s_Singleton;}
+	private static FlexiCoreRule s_Singleton = new FlexiCoreRule();
+	public static FlexiCoreRule s() {
+		return s_Singleton;
+	}
 
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource evaluationScript;
 
-
-
 	@Schema(description = "Arguments to the Java script rules, see RuleToArgument")
-	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
+	@OneToMany(targetEntity = RuleToArgument.class, mappedBy = "flexiCoreRule")
 	@JsonIgnore
-	private List<RuleToArgument> ruleToExecutionParameters=new ArrayList<>();
+	private List<RuleToArgument> ruleToExecutionParameters = new ArrayList<>();
 
 	public FlexiCoreRule() {
 	}
@@ -43,13 +43,14 @@ public class FlexiCoreRule extends Baseclass {
 	}
 
 	@Schema(description = "Arguments to the Java script rules, see RuleToArgument")
-	@OneToMany(targetEntity = RuleToArgument.class ,mappedBy = "flexiCoreRule")
+	@OneToMany(targetEntity = RuleToArgument.class, mappedBy = "flexiCoreRule")
 	@JsonIgnore
 	public List<RuleToArgument> getRuleToExecutionParameters() {
 		return ruleToExecutionParameters;
 	}
 
-	public <T extends FlexiCoreRule> T setRuleToExecutionParameters(List<RuleToArgument> ruleToExecutionParameters) {
+	public <T extends FlexiCoreRule> T setRuleToExecutionParameters(
+			List<RuleToArgument> ruleToExecutionParameters) {
 		this.ruleToExecutionParameters = ruleToExecutionParameters;
 		return (T) this;
 	}
@@ -59,10 +60,10 @@ public class FlexiCoreRule extends Baseclass {
 		return evaluationScript;
 	}
 
-	public <T extends FlexiCoreRule> T setEvaluationScript(FileResource evaluationScript) {
+	public <T extends FlexiCoreRule> T setEvaluationScript(
+			FileResource evaluationScript) {
 		this.evaluationScript = evaluationScript;
 		return (T) this;
 	}
-
 
 }

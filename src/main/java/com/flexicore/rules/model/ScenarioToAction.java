@@ -17,55 +17,55 @@ import javax.persistence.ManyToOne;
 @Schema(name = "ScenarioToAction link", description = "Many to Many links between Scenarios and ScenarioActions, note that the same action can be reused in many Scenarios")
 @Entity
 public class ScenarioToAction extends Baseclass {
-    private static ScenarioToAction s_Singleton = new ScenarioToAction();
+	private static ScenarioToAction s_Singleton = new ScenarioToAction();
 
-    public static ScenarioToAction s() {
-        return s_Singleton;
-    }
+	public static ScenarioToAction s() {
+		return s_Singleton;
+	}
 
+	@ManyToOne(targetEntity = Scenario.class)
+	private Scenario scenario;
+	private boolean enabled;
 
-    @ManyToOne(targetEntity = Scenario.class)
-    private Scenario scenario;
-    private boolean enabled;
+	@ManyToOne(targetEntity = ScenarioAction.class)
+	private ScenarioAction scenarioAction;
 
-    @ManyToOne(targetEntity = ScenarioAction.class)
-    private ScenarioAction scenarioAction;
+	public ScenarioToAction() {
+	}
 
-    public ScenarioToAction() {
-    }
+	public ScenarioToAction(String name, SecurityContext securityContext) {
+		super(name, securityContext);
+	}
 
-    public ScenarioToAction(String name, SecurityContext securityContext) {
-        super(name, securityContext);
-    }
+	@ManyToOne(targetEntity = Scenario.class)
+	@Schema(name = "Connected Scenario", description = "The referred to Scenario")
+	public Scenario getScenario() {
+		return scenario;
+	}
 
-    @ManyToOne(targetEntity = Scenario.class)
-    @Schema(name = "Connected Scenario", description = "The referred to Scenario")
-    public Scenario getScenario() {
-        return scenario;
-    }
+	public <T extends ScenarioToAction> T setScenario(Scenario scenario) {
+		this.scenario = scenario;
+		return (T) this;
+	}
 
-    public <T extends ScenarioToAction> T setScenario(Scenario scenario) {
-        this.scenario = scenario;
-        return (T) this;
-    }
+	@Schema(name = "Connected ScenarioAction", description = "A single ScenarioAction referred to by this ling")
+	@ManyToOne(targetEntity = ScenarioAction.class)
+	public ScenarioAction getScenarioAction() {
+		return scenarioAction;
+	}
 
-    @Schema(name = "Connected ScenarioAction", description = "A single ScenarioAction referred to by this ling")
-    @ManyToOne(targetEntity = ScenarioAction.class)
-    public ScenarioAction getScenarioAction() {
-        return scenarioAction;
-    }
+	public <T extends ScenarioToAction> T setScenarioAction(
+			ScenarioAction scenarioAction) {
+		this.scenarioAction = scenarioAction;
+		return (T) this;
+	}
 
-    public <T extends ScenarioToAction> T setScenarioAction(ScenarioAction scenarioAction) {
-        this.scenarioAction = scenarioAction;
-        return (T) this;
-    }
+	public boolean isEnabled() {
+		return enabled;
+	}
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public <T extends ScenarioToAction> T setEnabled(boolean enabled) {
-        this.enabled = enabled;
-        return (T) this;
-    }
+	public <T extends ScenarioToAction> T setEnabled(boolean enabled) {
+		this.enabled = enabled;
+		return (T) this;
+	}
 }
