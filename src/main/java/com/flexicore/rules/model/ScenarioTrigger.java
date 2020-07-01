@@ -37,8 +37,7 @@ public class ScenarioTrigger extends Baseclass {
 	@Column(columnDefinition = "timestamp with time zone")
 	private OffsetDateTime validTill;
 
-	@ManyToOne(targetEntity = ScenarioTriggerType.class)
-	private ScenarioTriggerType triggerType;
+	private String eventTypeCanonicalName;
 
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource evaluatingJSCode;
@@ -56,13 +55,12 @@ public class ScenarioTrigger extends Baseclass {
 		return (T) this;
 	}
 
-	@ManyToOne(targetEntity = ScenarioTriggerType.class)
-	public ScenarioTriggerType getTriggerType() {
-		return triggerType;
+	public String getEventTypeCanonicalName() {
+		return eventTypeCanonicalName;
 	}
 
-	public <T extends ScenarioTrigger> T setTriggerType(ScenarioTriggerType triggerType) {
-		this.triggerType = triggerType;
+	public <T extends ScenarioTrigger> T setEventTypeCanonicalName(String eventTypeCanonicalName) {
+		this.eventTypeCanonicalName = eventTypeCanonicalName;
 		return (T) this;
 	}
 

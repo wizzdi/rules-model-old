@@ -24,7 +24,7 @@ public class ScenarioToTrigger extends Baseclass {
 	private int ordinal;
 	private boolean firing;
 
-	@ManyToOne(targetEntity = ScenarioTriggerType.class)
+	@ManyToOne(targetEntity = ScenarioTrigger.class)
 	private ScenarioTrigger scenarioTrigger;
 
 	public ScenarioToTrigger() {
@@ -46,7 +46,7 @@ public class ScenarioToTrigger extends Baseclass {
 	}
 
 	@Schema(name = "ScenarioTrigger", description = "The connected ScenarioTrigger by this link")
-	@ManyToOne(targetEntity = ScenarioTriggerType.class)
+	@ManyToOne(targetEntity = ScenarioTrigger.class)
 	public ScenarioTrigger getScenarioTrigger() {
 		return scenarioTrigger;
 	}

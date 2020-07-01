@@ -6,9 +6,9 @@
 
 
 
+        <class>com.flexicore.model.dynamic.DynamicExecution</class>
         <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
         <class>com.flexicore.rules.model.Scenario</class>
-        <class>com.flexicore.rules.model.ScenarioTriggerType</class>
         <class>com.flexicore.rules.model.ScenarioTrigger</class>
         <class>com.flexicore.rules.model.ScenarioToTrigger</class>
         <class>com.flexicore.rules.model.ScenarioToAction</class>
