@@ -15,6 +15,8 @@
         <class>com.flexicore.rules.model.ScenarioToAction</class>
         <class>com.flexicore.rules.model.ScenarioAction</class>
         <class>com.flexicore.model.FileResource</class>
+        <class>com.flexicore.rules.model.ScenarioToDataSource</class>
+        <class>com.flexicore.rules.model.DataSource</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 

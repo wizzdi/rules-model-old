@@ -37,13 +37,16 @@ public class ScenarioTrigger extends Baseclass {
 	@Column(columnDefinition = "timestamp with time zone")
 	private OffsetDateTime validTill;
 
-	private ScenarioTriggerType triggerType;
+	@ManyToOne(targetEntity = ScenarioTriggerType.class)
+	private ScenarioTriggerType scenarioTriggerType;
 
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource evaluatingJSCode;
 	@OneToMany(targetEntity = ScenarioToTrigger.class,mappedBy = "scenarioTrigger")
 	@JsonIgnore
 	private List<ScenarioToTrigger> scenarioToTriggers=new ArrayList<>();
+	@ManyToOne(targetEntity = FileResource.class)
+	private FileResource logFileResource;
 
 	@ManyToOne(targetEntity = FileResource.class)
 	public FileResource getEvaluatingJSCode() {
@@ -56,12 +59,12 @@ public class ScenarioTrigger extends Baseclass {
 	}
 
 	@ManyToOne(targetEntity = ScenarioTriggerType.class)
-	public ScenarioTriggerType getTriggerType() {
-		return triggerType;
+	public ScenarioTriggerType getScenarioTriggerType() {
+		return scenarioTriggerType;
 	}
 
-	public <T extends ScenarioTrigger> T setTriggerType(ScenarioTriggerType triggerType) {
-		this.triggerType = triggerType;
+	public <T extends ScenarioTrigger> T setScenarioTriggerType(ScenarioTriggerType triggerType) {
+		this.scenarioTriggerType = triggerType;
 		return (T) this;
 	}
 
@@ -100,6 +103,16 @@ public class ScenarioTrigger extends Baseclass {
 
 	public <T extends ScenarioTrigger> T setScenarioToTriggers(List<ScenarioToTrigger> scenarioToTriggers) {
 		this.scenarioToTriggers = scenarioToTriggers;
+		return (T) this;
+	}
+
+	@ManyToOne(targetEntity = FileResource.class)
+	public FileResource getLogFileResource() {
+		return logFileResource;
+	}
+
+	public <T extends ScenarioTrigger> T setLogFileResource(FileResource logFileResource) {
+		this.logFileResource = logFileResource;
 		return (T) this;
 	}
 }
