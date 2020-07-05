@@ -19,6 +19,8 @@ public class ScenarioToDataSource extends Baseclass {
 	@ManyToOne(targetEntity = Scenario.class)
 	private Scenario scenario;
 	private boolean enabled;
+	private int ordinal;
+
 
 	@ManyToOne(targetEntity = DataSource.class)
 	private DataSource dataSource;
@@ -59,6 +61,15 @@ public class ScenarioToDataSource extends Baseclass {
 
 	public <T extends ScenarioToDataSource> T setEnabled(boolean enabled) {
 		this.enabled = enabled;
+		return (T) this;
+	}
+
+	public int getOrdinal() {
+		return ordinal;
+	}
+
+	public <T extends ScenarioToDataSource> T setOrdinal(int ordinal) {
+		this.ordinal = ordinal;
 		return (T) this;
 	}
 }

@@ -34,6 +34,10 @@ public class Scenario extends Baseclass {
 	@JsonIgnore
 	@OneToMany(targetEntity = ScenarioToAction.class, mappedBy = "scenario")
 	private List<ScenarioToAction> scenarioToActions = new ArrayList<>();
+
+	@JsonIgnore
+	@OneToMany(targetEntity = ScenarioToDataSource.class, mappedBy = "scenario")
+	private List<ScenarioToDataSource> scenarioToDataSource= new ArrayList<>();
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource logFileResource;
 	@ManyToOne(targetEntity = FileResource.class)
@@ -100,6 +104,17 @@ public class Scenario extends Baseclass {
 
 	public <T extends Scenario> T setEvaluatingJSCode(FileResource evaluatingJSCode) {
 		this.evaluatingJSCode = evaluatingJSCode;
+		return (T) this;
+	}
+
+	@JsonIgnore
+	@OneToMany(targetEntity = ScenarioToDataSource.class, mappedBy = "scenario")
+	public List<ScenarioToDataSource> getScenarioToDataSource() {
+		return scenarioToDataSource;
+	}
+
+	public <T extends Scenario> T setScenarioToDataSource(List<ScenarioToDataSource> scenarioToDataSource) {
+		this.scenarioToDataSource = scenarioToDataSource;
 		return (T) this;
 	}
 }

@@ -36,6 +36,7 @@ public class ScenarioTrigger extends Baseclass {
 	private OffsetDateTime validFrom;
 	@Column(columnDefinition = "timestamp with time zone")
 	private OffsetDateTime validTill;
+	private long activeMs;
 
 	@ManyToOne(targetEntity = ScenarioTriggerType.class)
 	private ScenarioTriggerType scenarioTriggerType;
@@ -113,6 +114,15 @@ public class ScenarioTrigger extends Baseclass {
 
 	public <T extends ScenarioTrigger> T setLogFileResource(FileResource logFileResource) {
 		this.logFileResource = logFileResource;
+		return (T) this;
+	}
+
+	public long getActiveMs() {
+		return activeMs;
+	}
+
+	public <T extends ScenarioTrigger> T setActiveMs(long activeMs) {
+		this.activeMs = activeMs;
 		return (T) this;
 	}
 }
