@@ -48,6 +48,7 @@ public class ScenarioTrigger extends Baseclass {
 	private List<ScenarioToTrigger> scenarioToTriggers=new ArrayList<>();
 	@ManyToOne(targetEntity = FileResource.class)
 	private FileResource logFileResource;
+	private String lastEventId;
 
 	@ManyToOne(targetEntity = FileResource.class)
 	public FileResource getEvaluatingJSCode() {
@@ -123,6 +124,15 @@ public class ScenarioTrigger extends Baseclass {
 
 	public <T extends ScenarioTrigger> T setActiveMs(long activeMs) {
 		this.activeMs = activeMs;
+		return (T) this;
+	}
+
+	public String getLastEventId() {
+		return lastEventId;
+	}
+
+	public <T extends ScenarioTrigger> T setLastEventId(String lastEventId) {
+		this.lastEventId = lastEventId;
 		return (T) this;
 	}
 }

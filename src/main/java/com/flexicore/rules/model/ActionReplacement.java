@@ -1,6 +1,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -14,6 +15,13 @@ public class ActionReplacement extends Baseclass {
     private ScenarioTrigger scenarioTrigger;
     @ManyToOne(targetEntity = ScenarioToAction.class)
     private ScenarioToAction scenarioToAction;
+
+    public ActionReplacement() {
+    }
+
+    public ActionReplacement(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     public String getExecutionTargetPath() {
         return executionTargetPath;
