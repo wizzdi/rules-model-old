@@ -15,6 +15,7 @@ public class ActionReplacement extends Baseclass {
     private ScenarioTrigger scenarioTrigger;
     @ManyToOne(targetEntity = ScenarioToAction.class)
     private ScenarioToAction scenarioToAction;
+    private boolean fetchSource;
 
     public ActionReplacement() {
     }
@@ -58,6 +59,15 @@ public class ActionReplacement extends Baseclass {
 
     public <T extends ActionReplacement> T setScenarioToAction(ScenarioToAction scenarioToAction) {
         this.scenarioToAction = scenarioToAction;
+        return (T) this;
+    }
+
+    public boolean isFetchSource() {
+        return fetchSource;
+    }
+
+    public <T extends ActionReplacement> T setFetchSource(boolean fetchSource) {
+        this.fetchSource = fetchSource;
         return (T) this;
     }
 }

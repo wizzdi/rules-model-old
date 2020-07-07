@@ -37,6 +37,9 @@ public class ScenarioTrigger extends Baseclass {
 	@Column(columnDefinition = "timestamp with time zone")
 	private OffsetDateTime validTill;
 	private long activeMs;
+	private long cooldownIntervalMs;
+	@Column(columnDefinition = "timestamp with time zone")
+	private OffsetDateTime lastActivated;
 
 	@ManyToOne(targetEntity = ScenarioTriggerType.class)
 	private ScenarioTriggerType scenarioTriggerType;
@@ -133,6 +136,25 @@ public class ScenarioTrigger extends Baseclass {
 
 	public <T extends ScenarioTrigger> T setLastEventId(String lastEventId) {
 		this.lastEventId = lastEventId;
+		return (T) this;
+	}
+
+	public long getCooldownIntervalMs() {
+		return cooldownIntervalMs;
+	}
+
+	public <T extends ScenarioTrigger> T setCooldownIntervalMs(long cooldownIntervalMs) {
+		this.cooldownIntervalMs = cooldownIntervalMs;
+		return (T) this;
+	}
+
+	@Column(columnDefinition = "timestamp with time zone")
+	public OffsetDateTime getLastActivated() {
+		return lastActivated;
+	}
+
+	public <T extends ScenarioTrigger> T setLastActivated(OffsetDateTime lastActivated) {
+		this.lastActivated = lastActivated;
 		return (T) this;
 	}
 }
