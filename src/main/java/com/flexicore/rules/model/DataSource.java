@@ -33,12 +33,12 @@ public class DataSource extends Baseclass {
 	}
 
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToDataSource.class, mappedBy = "scenarioAction")
+	@OneToMany(targetEntity = ScenarioToDataSource.class, mappedBy = "dataSource")
 	private List<ScenarioToDataSource> scenarioToDataSources = new ArrayList<>();
 
 	@Schema(name = "Scenarios", description = "A list of ScenarioToDataSource instances of all Scenarios connected to this ScenarioAction")
 	@JsonIgnore
-	@OneToMany(targetEntity = ScenarioToDataSource.class, mappedBy = "scenarioAction")
+	@OneToMany(targetEntity = ScenarioToDataSource.class, mappedBy = "dataSource")
 	public List<ScenarioToDataSource> getScenarioToDataSources() {
 		return scenarioToDataSources;
 	}
