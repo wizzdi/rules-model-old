@@ -17,7 +17,11 @@
         <class>com.flexicore.model.FileResource</class>
         <class>com.flexicore.rules.model.ScenarioToDataSource</class>
         <class>com.flexicore.rules.model.DataSource</class>
-        <class>com.flexicore.rules.model.ActionReplacement</class>
+        <class>com.flexicore.rules.request.ScenarioSavableEventFilter</class>
+        <class>com.flexicore.rules.request.ScenarioEventIdFiltering</class>
+        <class>com.flexicore.rules.request.ScenarioCreateEvent</class>
+        <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
+
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 
