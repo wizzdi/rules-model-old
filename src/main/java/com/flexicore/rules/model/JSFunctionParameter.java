@@ -12,7 +12,7 @@ public class JSFunctionParameter extends Baseclass {
     @ManyToOne(targetEntity = JSFunction.class)
     private JSFunction jsFunction;
     private int ordinal;
-    private String type;
+    private String parameterType;
 
     public JSFunctionParameter() {
     }
@@ -39,12 +39,12 @@ public class JSFunctionParameter extends Baseclass {
         return (T) this;
     }
 
-    public String getType() {
-        return type;
+    public String getParameterType() {
+        return parameterType;
     }
 
-    public <T extends JSFunctionParameter> T setType(String type) {
-        this.type = type;
+    public <T extends JSFunctionParameter> T setParameterType(String parameterType) {
+        this.parameterType = parameterType;
         return (T) this;
     }
 }

@@ -21,6 +21,8 @@
         <class>com.flexicore.rules.request.ScenarioEventIdFiltering</class>
         <class>com.flexicore.rules.request.ScenarioCreateEvent</class>
         <class>com.flexicore.model.dynamic.ExecutionParametersHolder</class>
+        <class>com.flexicore.rules.model.JSFunction</class>
+        <class>com.flexicore.rules.model.JSFunctionParameter</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
