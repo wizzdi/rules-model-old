@@ -1,6 +1,7 @@
 package com.flexicore.rules.model;
 
 import com.flexicore.model.Baseclass;
+import com.flexicore.security.SecurityContext;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,6 +13,13 @@ public class JSFunctionParameter extends Baseclass {
     private JSFunction jsFunction;
     private int ordinal;
     private String type;
+
+    public JSFunctionParameter() {
+    }
+
+    public JSFunctionParameter(String name, SecurityContext securityContext) {
+        super(name, securityContext);
+    }
 
     public JSFunction getJsFunction() {
         return jsFunction;
